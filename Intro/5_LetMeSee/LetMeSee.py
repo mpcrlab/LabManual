@@ -36,25 +36,25 @@ class MPCR_Rover_Image(Rover20):
         self.data = np.ones(240 * 320 + 4)
 
 
-    def mleft(self):
-        self.setTreads(-1, 1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mleft(self):  # create the function that turns the rover left so it can be called later on
+        self.setTreads(-1, 1)  # set left tread in reverse and right tread forward. This rotates the rover counterclockwise, like how a tank turns.
+        time.sleep(.1)  # continue that rotating movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop the rover's movement
 
-    def mforward(self):
-        self.setTreads(1, 1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mforward(self):  # create the function that moves the rover forward
+        self.setTreads(1, 1)  # set both treads in the forward direction
+        time.sleep(.1)  # continue the forward movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
-    def mright(self):
-        self.setTreads(1, -1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mright(self):  # create the function that turns the rover right
+        self.setTreads(1, -1)  # set left tread forward and right tread in reverse
+        time.sleep(.1)  # continue that rotating movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
-    def mbackward(self):
-        self.setTreads(-1, -1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mbackward(self):  # create the function that moves the rover backward
+        self.setTreads(-1, -1)  # set both treads in the reverse direction
+        time.sleep(.1)  # continue the backward movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
 
     # called by Rover20, acts as main loop
