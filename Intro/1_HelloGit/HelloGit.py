@@ -55,10 +55,10 @@ print 'The value of i is', i
 # Fibonacci series:
 # the sum of two elements defines the next
 a, b = 0, 1
-while b < 100:
-	print b
-	a, b = b, a+b
-
+while b < 100:  # runs the indented code provided that b is less than 100
+	print b  # the value of b is displayed
+	a, b = b, a+b  # a is now equal to b, and b is now equal to the sum of a and b
+		       # the process is repeated, restarting with the new a and b values, until b is more than 100
 
 #------------------------------------------------------#
 
@@ -76,8 +76,8 @@ print(Z)
 
 #. Create a null vector of size 10 but the fifth value which is 1
 
-Z = np.zeros(10)
-Z[4] = 1
+Z = np.zeros(10)  # begin with a null vector
+Z[4] = 1  # redefine the fifth value to be 1
 print(Z)
 
 
@@ -91,8 +91,8 @@ print(Z)
 
 #. Create a 3x3 matrix with values ranging from 0 to 8
 
-Z = np.arange(9).reshape(3,3)
-print(Z)
+Z = np.arange(9).reshape(3,3)  # arrange lists the values 0 to 8
+print(Z)		       # reshape forms a new line after every 3 terms, resulting in the 3x3 matrix
 
 
 
@@ -104,8 +104,9 @@ print(nz)
 
 
 #. Create a 3x3 identity matrix
+# identity matrix: a square matrix with ones on the diagonal (from top-left to bottom-right) and zeros elsewhere
 
-Z = np.eye(3)
+Z = np.eye(3) 
 print(Z)
 
 
@@ -132,7 +133,7 @@ print(Z)
 
 
 
-#. Create a 10x10 array with random values and find the minimum and maximum values
+#. Create a 10x10 array with random values and find the minimum and maximum values. The values range from 0 to 1.
 
 Z = np.random.random((10,10))
 Zmin, Zmax = Z.min(), Z.max()
@@ -178,7 +179,7 @@ print(Z)
 
 
 
-#. Create a random vector of size 10 and sort it
+#. Create a random vector of size 10 and sort it from lowest value to highest value
 
 Z = np.random.random(10)
 Z.sort()
