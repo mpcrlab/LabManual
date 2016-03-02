@@ -36,25 +36,25 @@ class MPCR_Rover_Image(Rover20):
         self.data = np.ones(240 * 320 + 4)
 
 
-    def mleft(self):
-        self.setTreads(-1, 1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mleft(self):  # create the function that turns the rover left so it can be called later on
+        self.setTreads(-1, 1)  # set left tread in reverse and right tread forward. This rotates the rover counterclockwise, like how a tank turns.
+        time.sleep(.1)  # continue that rotating movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop the rover's movement
 
-    def mforward(self):
-        self.setTreads(1, 1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mforward(self):  # create the function that moves the rover forward
+        self.setTreads(1, 1)  # set both treads in the forward direction
+        time.sleep(.1)  # continue the forward movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
-    def mright(self):
-        self.setTreads(1, -1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mright(self):  # create the function that turns the rover right
+        self.setTreads(1, -1)  # set left tread forward and right tread in reverse
+        time.sleep(.1)  # continue that rotating movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
-    def mbackward(self):
-        self.setTreads(-1, -1)
-        time.sleep(.1)
-        self.setTreads(0, 0)
+    def mbackward(self):  # create the function that moves the rover backward
+        self.setTreads(-1, -1)  # set both treads in the reverse direction
+        time.sleep(.1)  # continue the backward movement for 0.1 seconds
+        self.setTreads(0, 0)  # stop
 
 
     # called by Rover20, acts as main loop
@@ -64,11 +64,11 @@ class MPCR_Rover_Image(Rover20):
         self.currentImage = cv2.imdecode(np.asarray(bytearray(jpegbytes), dtype=np.uint8), 0)
 
         self.pattern = np.reshape(self.currentImage, (240 * 320))
-
+        # Ask the user to enter a number for a specific action. The number entered is now equal to self.action_choice
         self.action_choice = input("Enter 1 for left, 2 for forward, 3 for right, 4 for reverse, 5 for save and quit)")
-
-        self.action_choice = self.action_choice - 1
-
+        
+        self.action_choice = self.action_choice - 1  # Subtract 1 from the value assigned to self.action_choice
+                            # this makes the value entered align with the value required for the operation (seen in lines ~72, 90-100)
         if self.action_choice == 4:
             datasave = {}
             datasave['data'] = self.data
@@ -89,13 +89,13 @@ class MPCR_Rover_Image(Rover20):
 
         print np.asarray(self.data).shape[1]
 
-        if self.action_choice == 0:
-            self.mleft()
-        elif self.action_choice == 1:
-            self.mforward()
-        elif self.action_choice == 2:
-            self.mright()
-        elif self.action_choice == 3:
+        if self.action_choice == 0:    # If self.action_choice equals 0, run self.mleft(). We've already defined what that is,
+            self.mleft()               # so the rover turns left. If it doesn't equal 0, check the next "elif"
+        elif self.action_choice == 1:  # If self.action_choice equals 1, move the rover forward according 
+            self.mforward()            # to the self.mforward() function. If it doesn't, check the next "elif".
+        elif self.action_choice == 2:  # If self.action_choice equals 2, turn the rover right.
+            self.mright()              # If it doesn't, move on and check the next "elif"
+        elif self.action_choice == 3:  # If self.action_choice equals 3, move the rover backward.
             self.mbackward()
 
 

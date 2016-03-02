@@ -18,16 +18,16 @@ from rover import Rover20
 import time
 
 
-def main():
-    rover = Rover20()  # create rover
+def main():  # defining the function called "main()"
+    rover = Rover20()  # redefine the module Rover20 so we can use "rover" instead. It makes things easier.
 
     rover.turnLightsOn()  # turn on green lights
-    time.sleep(1)
+    time.sleep(1)  # make the rover wait 1 second in its current state
 
-    rover.turnLightsOff()
-    time.sleep(1)
+    rover.turnLightsOff()  # turn off green lights. Duh!
+    time.sleep(1)  # make the rover wait 1 second in its current state
 
     rover.close()  # close rover
 
 
-main()
+main()  # run the function we have just defined
